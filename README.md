@@ -24,7 +24,7 @@ Additionally, the application used Spotify's API, TicketMaster's API, and the au
 
 ## Mockup
 
-![Looking for Treble](/assets/images/trebleMockup.png)
+![Looking for Treble](/client/public/Assets/trebleMockup.png)
 
 ## Resources Used
 
