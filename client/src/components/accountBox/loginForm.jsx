@@ -12,14 +12,16 @@ import { AccountContext } from './accountContext';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../../utils/mutations';
-
+import App, {setTokenState} from '../../App';
 import Auth from '../../utils/auth';
+import auth from '../../utils/auth';
 
 const LoginForm = (props) => {
   const { switchToSignup } = useContext(AccountContext);
 
   const [formState, setFormState] = useState({ email: '', password: '' });
-  const [login, { error, data }] = useMutation(LOGIN_USER);
+  let data;
+  //const [login, { error, data }] = useMutation(LOGIN_USER);
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -34,15 +36,15 @@ const LoginForm = (props) => {
   // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    try {
-      const { data } = await login({
-        variables: { ...formState },
-      });
-      console.log('Log in successful');
-      Auth.login(data.login.token);
-    } catch (e) {
-      console.error(e);
-    }
+    // try {
+    //   const { data } = await fetch({
+    //     variables: { ...formState },
+    //   });
+    //   console.log('Log in successful');
+    //   Auth.login(data.login.token);
+    // } catch (e) {
+    //   console.error(e);
+    // }
 
     // clear form values
     setFormState({
@@ -53,8 +55,7 @@ const LoginForm = (props) => {
     const password = formState.password;
 
     if (email && password) {
-      const response = await fetch('/api/users/login', {
-        // const response = await fetch('/ graphql', {
+      const response = await fetch('http://localhost:3001/login', {
         method: 'POST',
         body: JSON.stringify({
           email,
@@ -64,15 +65,19 @@ const LoginForm = (props) => {
           'Content-Type': 'application/json',
         },
       });
-      console.log('Username found');
-      console.log(formState.email);
-      console.log(formState.password);
+      // console.log('Username found');
+      // console.log(formState.email);
+      // console.log(formState.password);
 
-      if (response.ok) {
-        // If successful, redirect the browser to the profile page
+      
+
+      if (response.status === 200) {
+        const token = await response.json();
+        auth.login(token);
+      // If successful, redirect the browser to the profile page
         document.location.replace('/profile');
       } else {
-        alert('that was it');
+        alert('Invalid Credentials');
       }
     }
   };
