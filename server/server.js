@@ -31,6 +31,15 @@ app.use(express.json());
 app.use(cors({
   origin: '*',
 }))
+app.use(express.static(path.join(__dirname, './client/public')))
+
+app.get('*', function(_, res) {
+  res.sendFile(path.join(__dirname, './client/public/index.html'), function(err) {
+    if (err) {
+      res.status(500).send(err)
+    }
+  })
+})
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')));
@@ -115,7 +124,7 @@ app.post('/login', async (req, res) => {
 
 app.post('/create', async (req, res) => {
   const email = req.body.email;
-  const name = req.body.email
+  const name = req.body.username;
   const pass = req.body.password;
 
   const user = await User.create({ name: name, email: email, password: password });

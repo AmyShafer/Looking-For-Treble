@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "If there's one thing the past few years have taught us, it's that friendships and live shows matter to us. Good Treble aims to connect local fans through their shared music passions. By just signing up and adding their Spotify account, this modern application lets users start their own Good Treble.",
   "main": "server/server.js",
+  "homepage": ".",
   "scripts": {
     "start": "node server/server.js --ignore client",
     "develop": "concurrently \"cd server && npm run start\" \"cd client && npm start\"",
