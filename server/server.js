@@ -114,7 +114,7 @@ const sess = {
 
 app.use(session(sess));
 
-app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(path.join(__dirname, 'public')));
 
 // start server and connect to db
 // sequelize
