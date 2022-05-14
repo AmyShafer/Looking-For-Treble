@@ -52,6 +52,22 @@ const styles = {
   container: {
     boxShadow: '6px 1px 9px 1px #00E5FF',
   },
+  importSection: {
+    padding: 5,
+    textAlign: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: 'auto',
+    width: '100%',
+    borderRadius: '1%',
+    // backgroundColor: '#00E5FF',
+    textShadow: '1px 3px 1px #9E9E9E',
+    color: 'purple',
+    texDecoration: 'none',
+  },
+  importBox: {
+    boxShadow: '6px 1px 9px 1px #CD33FF',
+  },
 };
 
 function UserAvatar(props) {
@@ -61,6 +77,7 @@ function UserAvatar(props) {
         <Col lg={true}>
           <div>
             <Image
+              style={styles.importBox}
               fluid="true"
               roundedCircle="true"
               src="https://i.scdn.co/image/ab67616d000048518f4944a3d77dd680bde9fd10"
@@ -73,12 +90,12 @@ function UserAvatar(props) {
         </Col> */}
         <Col>
           <Link to="/myEvents">
-            <h2>My Events</h2>
+            <h2 style={styles.importSection}>My Events</h2>
           </Link>
         </Col>
         <Col>
           <a href="https://www.savethemusic.org/">
-            <h2>SaveTheMusic Foundation</h2>
+            <h2 style={styles.importSection}>SaveTheMusic Foundation</h2>
           </a>
         </Col>
       </Row>
