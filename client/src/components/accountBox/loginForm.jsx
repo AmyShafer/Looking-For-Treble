@@ -55,7 +55,7 @@ const LoginForm = (props) => {
     const password = formState.password;
 
     if (email && password) {
-      const response = await fetch('http://localhost:3001/login', {
+      const response = await fetch('https://looking-for-treble.herokuapp.com/login', {
         method: 'POST',
         body: JSON.stringify({
           email,

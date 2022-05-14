@@ -59,7 +59,7 @@ app.post('/spotifyAPI/:code', async (req, res) => {
     const params = new URLSearchParams();
     params.append('code', code);
     //params.append('redirect_uri', 'https://good-treble.herokuapp.com/spotify/authorize');
-    params.append('redirect_uri', 'http://localhost:3000/spotify');
+    params.append('redirect_uri', 'https://looking-for-treble.herokuapp.com/spotify');
     params.append('grant_type', 'authorization_code');
 
     const newToken = await fetch('https://accounts.spotify.com/api/token', {
@@ -86,7 +86,7 @@ app.post('/spotifyAPI/:code', async (req, res) => {
     spotify.getTopArtists(1);
     spotify.getTopTrackArt(1);
     //res.redirect('https://good-treble.herokuapp.com/redirectPage');
-    res.redirect('http://localhost:3000/');
+    res.redirect('https://looking-for-treble.herokuapp.com/');
   }
 });
 
