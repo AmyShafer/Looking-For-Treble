@@ -28,12 +28,14 @@ app.use(
   })
 );
 app.use(express.json());
-app.use(cors({
-  origin: '*',
-}))
+app.use(
+  cors({
+    origin: '*',
+  })
+);
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '/client/build')));
+  app.use(express.static(path.join(__dirname, '../client/build')));
 }
 
 app.use(function (req, res, next) {
@@ -97,35 +99,41 @@ app.post('/login', async (req, res) => {
   const email = req.body.email;
   const pass = req.body.password;
 
-  const user = await User.findOne({ where: { email: email }});
-  if(!user){
+  const user = await User.findOne({ where: { email: email } });
+  if (!user) {
     res.sendStatus(500);
   } else {
-  const validPass = await bcrypt.compare(pass, user.password);
-  if(validPass){
-    const token = jwt.sign({ userid: user.id, username: user.name }, process.env.secret);
-    res.status(200).json({
-      token: token
-    })
-  } else {
-    res.sendStatus(500);
+    const validPass = await bcrypt.compare(pass, user.password);
+    if (validPass) {
+      const token = jwt.sign(
+        { userid: user.id, username: user.name },
+        process.env.secret
+      );
+      res.status(200).json({
+        token: token,
+      });
+    } else {
+      res.sendStatus(500);
+    }
   }
-}
-})
+});
 
 app.post('/create', async (req, res) => {
   const email = req.body.email;
   const name = req.body.username;
   const pass = req.body.password;
 
-  const user = await User.create({ name: name, email: email, password: password });
-  if(user){
+  const user = await User.create({
+    name: name,
+    email: email,
+    password: password,
+  });
+  if (user) {
     res.sendStatus(200);
   } else {
     res.sendStatus(500);
   }
-}
-)
+});
 
 app.get('/spotifyArtists', async (req, res) => {
   let artistJSON = [];
