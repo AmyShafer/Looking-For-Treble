@@ -22,6 +22,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "framer-motion": "^2.9.5",
+    "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.3.3",
     "node-fetch": "^3.2.4",
     "npm-watch": "^0.11.0",

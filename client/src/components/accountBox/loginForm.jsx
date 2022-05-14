@@ -12,14 +12,14 @@ import { AccountContext } from './accountContext';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../../utils/mutations';
-
+import App, {setTokenState} from '../../App';
 import Auth from '../../utils/auth';
 
 const LoginForm = (props) => {
   const { switchToSignup } = useContext(AccountContext);
 
   const [formState, setFormState] = useState({ email: '', password: '' });
-  let jwt;
+  let data;
   //const [login, { error, data }] = useMutation(LOGIN_USER);
 
   // update state based on form input changes
@@ -72,7 +72,6 @@ const LoginForm = (props) => {
 
       if (response.status === 200) {
         const token = await response.json();
-      alert(token.token);
       // If successful, redirect the browser to the profile page
         document.location.replace('/profile');
       } else {
@@ -84,7 +83,7 @@ const LoginForm = (props) => {
   return (
     <div>
       <BoxContainer>
-        {jwt ? (
+        {data ? (
           <p>
             Success! You may now head <Link to="/">back to the homepage.</Link>
           </p>
