@@ -40,6 +40,8 @@ import Auth from '../../utils/auth';
 //   );
 // }
 
+let data;
+
 export function SignupForm(props) {
   const { switchToSignin } = useContext(AccountContext);
   const [formState, setFormState] = useState({
@@ -47,7 +49,7 @@ export function SignupForm(props) {
     email: '',
     password: '',
   });
-  const [addUser, { error, data }] = useMutation(ADD_USER);
+  // const [addUser, { error, data }] = useMutation(ADD_USER);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -61,16 +63,37 @@ export function SignupForm(props) {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
-    try {
-      const { data } = await addUser({
-        variables: { ...formState },
+    const email = formState.email;
+    const username = formState.username;
+    const password = formState.password;
+
+    const response = await fetch('http://localhost:3001/create', {
+        method: 'POST',
+        body: JSON.stringify({
+          email,
+          username,
+          password,
+        }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
       });
 
-      Auth.login(data.addUser.token);
-    } catch (e) {
-      console.error(e);
-    }
-  };
+      if(response.status(200)){
+        alert('User Created, please log in');
+      } else {
+        alert('User Creation Failed');
+      }
+  //   try {
+  //     const { data } = await addUser({
+  //       variables: { ...formState },
+  //     });
+
+  //     Auth.login(data.addUser.token);
+  //   } catch (e) {
+  //     console.error(e);
+  //   }
+   };
 
   return (
     <BoxContainer>

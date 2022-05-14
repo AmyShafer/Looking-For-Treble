@@ -18,6 +18,7 @@
   "dependencies": {
     "@apollo/client": "^3.6.2",
     "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "framer-motion": "^2.9.5",
     "mysql2": "^2.3.3",
