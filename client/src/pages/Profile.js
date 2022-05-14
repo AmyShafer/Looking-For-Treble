@@ -204,7 +204,7 @@ function Profile() {
 }
 
 async function loadSongs(stateUpdate) {
-  const newSongs = await fetch('https://looking-for-treble.herokuapp.com/spotifyTracks', {
+  const newSongs = await fetch(`https://looking-for-treble.herokuapp.com:${process.env.PORT}/spotifyTracks`, {
     method: 'GET',
   });
   let stateArray = [];
@@ -226,7 +226,7 @@ async function loadSongs(stateUpdate) {
 }
 
 async function loadArtists(stateUpdate) {
-  const newArtists = fetch('https://looking-for-treble.herokuapp.com/spotifyArtists', {
+  const newArtists = fetch(`https://looking-for-treble.herokuapp.com:${process.env.PORT}/spotifyArtists`, {
     method: 'GET',
   })
     .then((response) => response.json())
@@ -243,7 +243,7 @@ function spotifyGet() {
   const searchParams = new URLSearchParams(window.location.search);
   const code = searchParams.get('code');
   console.log(code);
-  fetch(`https://looking-for-treble.herokuapp.com/spotifyAPI/${code}`, {
+  fetch(`https://looking-for-treble.herokuapp.com:${process.env.PORT}/spotifyAPI/${code}`, {
     method: 'POST',
   });
   window.location = 'https://looking-for-treble.herokuapp.com/';
