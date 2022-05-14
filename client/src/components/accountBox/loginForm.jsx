@@ -14,6 +14,7 @@ import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../../utils/mutations';
 import App, {setTokenState} from '../../App';
 import Auth from '../../utils/auth';
+import auth from '../../utils/auth';
 
 const LoginForm = (props) => {
   const { switchToSignup } = useContext(AccountContext);
@@ -72,6 +73,7 @@ const LoginForm = (props) => {
 
       if (response.status === 200) {
         const token = await response.json();
+        auth.login(token);
       // If successful, redirect the browser to the profile page
         document.location.replace('/profile');
       } else {
