@@ -31,18 +31,9 @@ app.use(express.json());
 app.use(cors({
   origin: '*',
 }))
-app.use(express.static(path.join(__dirname, './client/public')))
-
-app.get('*', function(_, res) {
-  res.sendFile(path.join(__dirname, './client/public/index.html'), function(err) {
-    if (err) {
-      res.status(500).send(err)
-    }
-  })
-})
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../client/build')));
+  app.use(express.static(path.join(__dirname, '/client/build')));
 }
 
 app.use(function (req, res, next) {
