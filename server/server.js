@@ -114,33 +114,6 @@ const sess = {
 
 app.use(session(sess));
 
-// app.use(express.static(path.join(__dirname, 'public')));
-
-// start server and connect to db
-// sequelize
-//   .sync({ force: false })
-//   .then(() => {
-//     app.listen(PORT, () => console.log('Now listening'));
-//   })
-//   .catch(function (err) {
-//     console.log(err);
-//   });
-
-//works
-//const startApolloServer = async (typeDefs, resolvers) => {
-//   await server.start();
-//   server.applyMiddleware({ app });
-
-//   sequelize.once('open', () => {
-//     app.listen(PORT, () => {
-//       console.log(`API server running on port ${PORT}!`);
-//       console.log(
-//         `Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`
-//       );
-//     });
-//   });
-// };
-
 const startApolloServer = async (typeDefs, resolvers) => {
   await server.start();
   server.applyMiddleware({ app });
