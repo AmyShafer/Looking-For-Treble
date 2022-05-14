@@ -113,9 +113,9 @@ function EventCard(props) {
                   <button style={styles.button}>
                     <a href={event.url}>Get tickets</a>
                   </button>
-                  <button style={styles.button}>
+                  {/* <button style={styles.button}>
                     <a>Add to my events page</a>
-                  </button>
+                  </button> */}
                 </Card.Body>
               </Card>
             </Col>

@@ -14,7 +14,7 @@ if (process.env.JAWSDB_URL) {
       // host: 'us-cdbr-east-05.cleardb.net',
       dialect: 'mysql',
       port: 3306,
-      logging: false,
+      // logging: false,
     }
   );
 }

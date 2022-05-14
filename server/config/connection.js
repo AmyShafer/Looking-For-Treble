@@ -11,10 +11,9 @@ if (process.env.JAWSDB_URL) {
     process.env.DB_USER,
     process.env.DB_PASSWORD,
     {
-      host: 'us-cdbr-east-05.cleardb.net',
+      // host: 'us-cdbr-east-05.cleardb.net',
       dialect: 'mysql',
       port: 3306,
-      // port: 3001,
     }
   );
 }

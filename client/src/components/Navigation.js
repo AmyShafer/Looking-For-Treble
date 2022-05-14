@@ -107,7 +107,7 @@ function Navigation() {
                   Login{' '}
                 </Link>{' '}
               </li>{' '}
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <Link
                   className="nav-link"
                   to="/communityPage"
@@ -115,7 +115,7 @@ function Navigation() {
                 >
                   Community{' '}
                 </Link>{' '}
-              </li>{' '}
+              </li>{' '} */}
               <li className="nav-item">
                 <a
                   className="nav-link"
