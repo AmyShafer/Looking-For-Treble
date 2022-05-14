@@ -48,7 +48,7 @@ function SpotifyImport() {
 
 function beginImport() {
   var client_id = '0939bba83f154b66900eaa7a37431b3c';
-  var redirect_uri = 'https://looking-for-treble.herokuapp.com/spotify';
+  var redirect_uri = 'https://looking-for-treble.herokuapp.com/';
   //var redirect_uri = 'http://localhost:3000/spotify';
 
   var state = '123456';
