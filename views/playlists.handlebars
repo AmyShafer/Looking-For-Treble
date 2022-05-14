@@ -1,9 +1,0 @@
-<div class="playlist-container my-1">
-<h1 class="check-out"> Check out playlists from other users!</h1>
-
-{{#each playlists as |playlist|}}
-  <a href='https://good-treble.herokuapp.com/api/playlists/{{playlist.user_id}}'><p
-    >{{playlist.name}}</p></a>
-
-{{/each}}
-</div>
