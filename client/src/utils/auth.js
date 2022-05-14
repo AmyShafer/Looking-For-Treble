@@ -27,6 +27,18 @@ class AuthService {
     return localStorage.getItem('id_token');
   }
 
+  getName() {
+    const token = this.getToken();
+    const decoded = decode(token);
+    return decoded.username;
+  }
+
+  getId() {
+    const token = this.getToken();
+    const decoded = decode(token);
+    return decoded.userid;
+  }
+
   login(idToken) {
     localStorage.setItem('id_token', idToken);
     window.location.assign('/');
