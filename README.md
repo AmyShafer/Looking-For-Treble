@@ -48,7 +48,7 @@ You can find Looking for Treble's GitHub Repository here:
 
 ## Deployed-url
 Looking for Treble is deployed using Heroku. Check it out!
-[Looking for Treble's Deployed Link](https:looking-for-treble-heroku)
+[Looking for Treble's Deployed Link](https://looking-for-treble.herokuapp.com/)
 
 ## License
 Copyright 2022 Fernando Vasquez, David McGinley, Jerome McClarin, & Amy Shafer
